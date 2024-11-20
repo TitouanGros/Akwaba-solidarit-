@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AKWABA Solidarité</title>
+    <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css">
+    <!-- Utilisation de Google Fonts pour une meilleure typographie -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="header" data-aos="fade-down">
+        <div class="logo-container">
+            <img src="logo.jpg" alt="Logo AKWABA Solidarité" class="logo">
+        </div>
+        
+        <a href="https://www.instagram.com/akwabasolidarite/" target="_blank" class="instagram-icon" data-aos="fade-left">
+            <img src="instagram.jpg" alt="Instagram">
+        </a>
+    </div>
+    
+    <nav data-aos="fade-down">
+        <div class="menu-container">
+            <button class="menu-toggle">☰</button>
+            <span class="active-page-title">Gallerie</span> <!-- Page par défaut à titre d'exemple -->
+        </div>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="association.html">L'association</a></li>
+            <li><a href="https://lydia-app.com/pots?id=82116-maraudes-akwaba-solidarite" target="_blank">Nous soutenir</a></li>
+            <li><a href="gallerie.html" class="active">Gallerie</a></li>
+            <li><a href="https://docs.google.com/forms/d/e/1FAIpQLScgW9mUwsnhg8KSeGvjql5Tu4O_sFVx1lUVMCx7DyQgu4d7ag/viewform" target="_blank">Nous rejoindre</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="galerie">
+        <div class="photo"><img src="gallerie/1.jpg" alt="Cadeaux"></div>
+        <div class="photo"><img src="gallerie/2.jpg" alt="Chanson"></div>
+        <div class="photo"><img src="gallerie/3.jpg" alt="Vetements maraude"></div>
+        <div class="photo"><img src="gallerie/4.jpg" alt="Merch 1"></div>
+        <div class="photo"><img src="gallerie/5.jpg" alt="Merch 2"></div>
+        <!-- Répétez le bloc .photo pour chaque photo que vous voulez ajouter -->
+    </section>
+    
+
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script>
+    AOS.init({
+        duration: 1200,
+    });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuToggle = document.querySelector('.menu-toggle');
+            const menu = document.querySelector('nav ul');
+            const links = document.querySelectorAll('nav ul li a');
+            const titleElement = document.querySelector('.active-page-title');
+            
+            // Menu déroulant
+            menuToggle.addEventListener('click', function() {
+                menu.style.display = (menu.style.display === 'none' || menu.style.display === '') ? 'flex' : 'none';
+            });
+
+            // Affichage du titre de la page active
+            for(let link of links) {
+                link.addEventListener('click', function() {
+                    titleElement.textContent = this.textContent.trim();
+                    
+                    // Remove the active class from all links
+                    links.forEach(l => l.classList.remove('active'));
+
+                    // Add the active class to the clicked link
+                    this.classList.add('active');
+                });
+            }
+        });
+    </script> 
+</body>
+</html>

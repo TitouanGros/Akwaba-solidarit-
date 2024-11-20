@@ -1,0 +1,530 @@
+/* Définition des couleurs globales pour le site */
+:root {
+    --primary-color: #168BC0; /* Bleu clair */
+    --secondary-color: #FFFFFF; /* Blanc */
+}
+
+/* Styles globaux pour tout le corps du document */
+body {
+    font-family: 'Poppins', Arial, sans-serif; /* Police de caractère général */
+    background-color: var(--secondary-color); /* Couleur de fond pour le corps entier */
+    font-size: 20px; /* Taille de police de base pour les grands écrans */
+}
+
+/* Styles pour l'en-tête du site */
+.header {
+    justify-content: space-between; /*Répartit l'espace entre les éléments enfants */
+    align-items: center; /* Centre les éléments verticalement */
+    background-color: var(--secondary-color); 
+    padding: 0 20px; /* Ajoute un peu d'espace sur les côtés pour éviter que les éléments ne touchent les bords */
+    display: flex; /* Utilise un affichage flexible pour les éléments enfants */  /* Centre les éléments enfants horizontalement */
+}
+
+.logo-container {
+    flex: 1; /* Prend tout l'espace disponible, poussant l'icône Instagram vers la droite */
+    display: flex;
+    justify-content: center; /* Centre le logo horizontalement */
+}
+
+/* Styles pour le logo */
+.logo {
+    height: 200px; /* Hauteur du logo */
+    transition: all 0.3s; /* Effet de transition pour toutes les propriétés modifiées (par exemple, sur le survol) */
+    margin: 50px; /* Espace autour du logo */
+}
+
+.logo:hover {
+    transform: rotate(10deg) scale(1.05);
+}
+
+.instagram-icon {
+    margin-right: 20px;
+}
+
+/* Styles pour l'icône Instagram */
+.instagram-icon img {
+    height: 60px; /* Hauteur de l'icône */
+    transition: all 0.3s; /* Effet de transition pour toutes les propriétés modifiées (par exemple, sur le survol) */
+}
+
+/* Styles pour l'icône Instagram lorsqu'elle est survolée */
+.instagram-icon img:hover {
+    filter: grayscale(30%); /* Applique un filtre de désaturation de 30% lors du survol */
+}
+
+/* Styles pour la barre de navigation */
+nav {
+    background-color: var(--primary-color);
+    width: 100%;
+    padding: 10px 0;
+    margin-bottom: 20px; /* Ajoute un espace en dessous de la barre de navigation */
+}
+
+/* Styles pour la liste de la barre de navigation */
+nav ul {
+    display: flex;
+    justify-content: space-between; /* Répartit les éléments de la liste uniformément sur toute la largeur */
+    list-style-type: none;
+    padding: 0;
+    margin: 0; /* Supprime la marge externe de la liste */
+}
+
+/* Styles pour les éléments de la liste de la barre de navigation */
+nav ul li {
+    flex-grow: 1; /* Permet aux éléments de la liste de croître et de se partager uniformément la largeur disponible */
+    display: flex; /* Utilise un affichage flexible pour centrer le contenu des éléments de la liste */
+    justify-content: center;
+    align-items: center; /* Centre le contenu des éléments de la liste verticalement */
+}
+
+/* Styles pour les liens dans la barre de navigation */
+nav ul li a {
+    text-decoration: none;
+    color: var(--secondary-color);
+    padding: 10px 0; /* Supprime l'espacement horizontal et utilise l'espacement vertical pour ajuster la hauteur */
+    width: 100%; /* Utilise toute la largeur de l'élément de liste parent */
+    height: 100%; /* Utilise toute la hauteur de l'élément de liste parent */
+    display: flex; /* Utilise un affichage flexible pour centrer le contenu des liens */
+    justify-content: center;
+    align-items: center;
+    transition: all 0.3s;
+    border-radius: 5px;
+    position: relative; /* Ajouté pour permettre un positionnement absolu de l'indicateur actif */
+}
+
+nav ul li .active::before {
+    content: ""; /* Contenu vide pour l'élément généré */
+    position: absolute;
+    bottom: 0;
+    left: 10%; /* Centré horizontalement, avec un léger décalage */
+    width: 80%; /* Largeur correspondant au décalage à gauche et à droite */
+    height: 3px; /* Épaisseur du soulignement */
+    background-color: #00c4ff; /* Une nuance de bleu clair */
+    border-radius: 1.5px; /* Arrondit légèrement les bords du soulignement */
+    transform: translateY(5px); /* Léger décalage vers le haut pour l'effet "flottant" */
+}
+
+/* Styles pour les liens lorsqu'ils sont survolés */
+nav ul li a:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparence pour un effet doux */
+}
+
+nav ul li .active {
+    background-color: rgba(0, 196, 255, 0.2); /* Un fond bleu clair semi-transparent */
+}
+
+.menu-toggle {
+    display: none; /* caché par défaut */
+    font-size: 24px;
+    background: none;
+    border: none;
+    color: var(--secondary-color);
+    cursor: pointer;
+    outline: none;
+}
+
+.actualites {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+/* Styles pour une actualité individuelle */
+.actualite {
+    display: flex; 
+    justify-content: space-between;
+    width: calc(100% - 40px); /* Largeur totale de la page web moins les marges de 20px à gauche et à droite */
+    margin: 10px 20px; /* Marge de 20px à gauche et à droite */
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    overflow: hidden; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px 10px 10px 30px; 
+}
+
+.actualite img {
+    max-width: 30%; /* L'image prendra jusqu'à 50% de la largeur de la carte d'actualité */
+    height: auto; 
+}
+
+.actualite-content {
+    padding: 30px;
+    flex-grow: 1; /* Permet au contenu de l'actualité de prendre tout l'espace disponible, en poussant l'image vers la droite */
+}
+
+.actualite:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2); /* Ombre portée plus prononcée */
+    transform: translateY(-10px) scale(1.02); /* Déplacement vers le haut avec un léger zoom */
+}
+
+/* Styles pour la section des actualités */
+.actualites-akwa3 {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 80%;
+    margin: 0 auto;  
+}
+
+.actualite-akwa3 {
+    width: 100%;  
+    margin: 20px 0;
+    border: 1px solid var(--primary-color);
+    border-radius: 5px;
+    overflow: hidden; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px; 
+}
+
+/* Pour la grille d'images seulement */
+.images-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 15px;
+}
+
+.actualite-akwa3 img {
+    width: 50%;  
+    height: auto;  
+    border-radius: 5px;
+    margin: auto;
+}
+
+.single-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 1 / span 3;
+    height: 100%; /* Pour occuper tout l'espace disponible */
+}
+
+.single-image img {
+    max-width: calc(33.33% - 15px); /* Ajustement pour correspondre à la taille des autres images (en tenant compte de l'espacement) */
+}
+.actualite-akwa3:hover {
+    box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+    transform: translateY(-10px) scale(1.02);
+}
+
+
+.reservation-button {
+    display: inline-block;
+    padding: 10px 15px;
+    background-color: #b63405;
+    color: #fff;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.reservation-button:hover {
+    background-color: #b63405;
+}
+
+
+.section-title {
+    font-size: 2.5em;                /* Taille de la police */
+    text-align: center;              /* Centrer le texte */
+    margin-top: 50px;                /* Espace au-dessus du titre */
+    margin-bottom: 50px;            /* Espace en dessous du titre */
+    position: relative;             /* Pour positionner des éléments par rapport à ce titre si nécessaire */
+    color: #333;                    /* Couleur du texte */
+
+    /* Si vous voulez un effet décoratif sous le titre, comme une ligne */
+    &:after {
+        content: "";                /* Contenu vide pour un élément purement décoratif */
+        width: 50px;                /* Largeur de la ligne */
+        height: 3px;                /* Hauteur de la ligne */
+        background-color: #168BC0;; /* Couleur de la ligne */
+        position: absolute;         /* Positionnement par rapport au titre */
+        bottom: -10px;              /* Positionnement sous le titre */
+        left: 50%;                  /* Centrer horizontalement */
+        transform: translateX(-50%); /* Ajustement pour un centrage parfait */
+    }
+}
+
+.btn-reserve {
+    display: inline-block;   /* Pour pouvoir centrer le bouton */
+    padding: 15px 30px;     /* Espacement intérieur */
+    margin: 30px auto;      /* Espacement extérieur */
+    background-color: #b63405; /* Couleur d'arrière-plan gris foncé */
+    color: #fff;            /* Couleur du texte blanc */
+    text-transform: uppercase;  /* Texte en majuscules */
+    font-weight: bold;      /* Texte en gras */
+    border: none;           /* Pas de bordures */
+    border-radius: 5px;    /* Coins arrondis */
+    cursor: pointer;        /* Style de curseur */
+    transition: background-color 0.3s; /* Transition douce */
+    text-decoration: none; /* Pas de soulignement */
+    font-size: 1rem;       /* Taille de police */
+}
+
+.btn-reserve:hover {
+    background-color: #b6340593; /* Une couleur d'arrière-plan plus foncée lors du survol */
+}
+
+.button-container {
+    text-align: center;
+}
+
+.akwababynight-section-title {
+    font-size: 3em;                  /* Taille de police plus grande */
+    background-color: #168BC0;         /* Bande noire pour le fond */
+    color: #fff;                    /* Texte en blanc */
+    padding: 10px 10px;                /* Espacement interne pour la bande */
+    width: fit-content;             /* La largeur s'ajuste en fonction du contenu */
+    margin: 0 auto;                 /* Centrage horizontal */
+    border-radius: 8px;             /* Coins arrondis, optionnel */
+}
+
+* {
+    transition: all 0.3s;
+}
+
+
+/* Pour la page association */
+
+.about-section {
+    padding: 50px 10%;
+    text-align: center;
+}
+
+.about-section h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.underline {
+    width: 70px;
+    height: 3px;
+    background-color: #168BC0; /* couleur futuriste */
+    margin: 10px auto;
+}
+
+.about-section p {
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    line-height: 1.6;
+}
+
+/* Pour la page gallerie*/ 
+
+.galerie {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Espacement entre les photos */
+    justify-content: center; /* Centre les photos si elles ne prennent pas toute la largeur */
+}
+
+.photo {
+    flex: 1 1 calc(25% - 10px); /* Chaque photo prendra 25% de la largeur du conteneur moins l'espacement */
+    overflow: hidden; /* Cache les débordements, utile si les images n'ont pas toutes le même ratio */
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    transition: transform 0.5s;
+}
+
+.photo img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.3s ease; /* Effet zoom au survol */
+}
+
+
+.photo:hover img {
+    transform: scale(1.1); /* Zoom sur l'image au survol */
+}
+
+/* Pour la page Contact */
+
+.contact-socials {
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Espace entre les logos */
+}
+
+.social-icon-large {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.social-image-large {
+    width: 70px;
+    height: 70px;
+    margin-right: 20px;
+}
+
+.social-icon-large span {
+    font-size: 1.5rem;
+    color: #ff4500;
+    font-weight: 600;
+}
+
+.contact-facebook .social-icon-large span {
+    color: #1877f2; /* Couleur Facebook */
+}
+
+.contact-linkedin .social-icon-large span {
+    color: #0077b5; /* Couleur LinkedIn */
+}
+
+.active-page-title {
+    display: none;
+}
+
+/* Écrans de taille moyenne */
+@media (max-width: 768px) {
+    body {
+        font-size: 14px; /* Réduire la taille de la police */
+    }
+
+    .logo {
+        height: 80px;
+        margin: 40px;
+    }
+
+    nav ul {
+        gap: 20px;
+    }
+
+    nav ul li {
+        margin: 0 15px 15px 15px;
+    }
+
+    .instagram-icon img {
+        height: 60px;
+        margin: 40px;
+    }
+
+    .actualite {
+        flex-direction: column; /* Les images des actualités se positionnent au-dessus du contenu sur les écrans moyens */
+    }
+
+    .actualite img {
+        max-width: 100%; /* L'image prend toute la largeur sur les écrans moyens */
+        margin-top: 15px; /* Espace au-dessus de l'image */
+    }
+
+    .section-title {
+        font-size: 2em;           /* Réduisez la taille de la police pour s'adapter à la tablette */
+        margin-top: 30px;
+        margin-bottom: 20px;
+    }
+
+    .photo {
+        flex: 1 1 calc(50% - 10px);
+    }
+}
+
+/* Petits écrans (mobiles) */
+@media (max-width: 480px) {
+    body {
+        font-size: 12px; 
+    }
+
+    .logo {
+        height: 50px; 
+        margin: 15px 10px;
+    }
+
+    /* Ajustements pour la barre de navigation */
+    nav ul {
+        display: none;
+        flex-direction: column;
+        transition: max-height 0.3s ease-in-out;
+    }
+
+    .contact-socials {
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrer les éléments horizontalement si nécessaire */
+    }
+    
+    .contact-instagram, .contact-facebook, .contact-linkedin {
+        width: 100%; /* Prendre toute la largeur */
+        margin-bottom: 15px; /* Espacement entre les éléments */
+    }
+    
+    nav ul li {
+        width: 100%; /* prend toute la largeur */
+        margin: 5px 0; /* ajustez comme nécessaire */
+    }
+
+    nav ul li a {
+        padding: 8px 0;
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+
+    nav ul li a.active {
+        color: #ffffff; /* Changez à la couleur que vous préférez */
+        text-decoration: underline; /* Pour un simple soulignement */
+    }
+    
+
+    img {
+        max-width: 100%;
+        height: auto;
+    }    
+
+    .instagram-icon img {
+        height: 30px;
+        margin: 15px;
+    }
+
+    .section-title {
+        font-size: 1.5em;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+
+    .section-title:after {
+        width: 30px;
+        height: 2px;
+        bottom: -6px;
+    }
+
+    .actualite {
+        margin: 10px 10px;
+        padding: 8px 8px 8px 20px; 
+    }
+
+    .actualite img {
+        margin-top: 10px;
+    }
+
+    .photo {
+        flex: 1 1 100%;
+    }
+    
+    .menu-container {
+        display: flex;
+        justify-content: center;  /* Centre le conteneur .menu-and-title sur la page */
+        width: 100%;  /* Prend toute la largeur de son parent */
+        align-items: center;  /* Centre les éléments verticalement */
+    }    
+    
+
+    .menu-toggle {
+        display: block; 
+        border: none;
+        background: transparent;
+        font-size: 24px; /* ajustez selon vos besoins */
+        cursor: pointer;
+        margin: 0 10px;
+    }
+
+    .active-page-title {
+        font-size: 12px; 
+        color: #ffffff; /* Vous pouvez modifier la couleur selon votre préférence */
+        flex-grow: 1;  /* Prendre tout l'espace restant après .menu-toggle */
+        text-align: center;  /* Centrer le texte dans cet espace */
+        margin-right: 67px;
+    }
+}
